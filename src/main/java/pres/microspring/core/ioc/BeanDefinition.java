@@ -6,14 +6,33 @@ package pres.microspring.core.ioc;
  */
 public class  BeanDefinition  {
 
-    private final Object bean;
 
-    public BeanDefinition(Object bean) {
+    private final String name;
+
+    private final String className;
+
+    private Object bean;
+
+    public BeanDefinition(String name,String className){
+        this.name = name;
+        this.className = className;
+        this.bean = null;
+    }
+
+
+    public void setBean(Object bean) {
         this.bean = bean;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
     public Object getBean() {
         return bean;
     }
-
 }

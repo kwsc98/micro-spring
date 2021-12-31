@@ -1,21 +1,19 @@
 package pres.microspring.core.ioc;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 /**
- * @author yihua.huang@dianping.com
+ * @author kwsc98
  */
-public class BeanFactory {
-
-	private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
-
-	public Object getBean(String name) {
-		return beanDefinitionMap.get(name).getBean();
-	}
-
-	public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
-		beanDefinitionMap.put(name, beanDefinition);
-	}
+public interface BeanFactory {
+    /**
+     * name : bean的id
+     * return bean的实例对象
+     */
+    Object getBean(String name);
+    /**
+     * 获取bean的实例对象
+     */
+    void registerBeanDefinition(String name, BeanDefinition beanDefinition);
 
 }
