@@ -13,10 +13,13 @@ public class  BeanDefinition  {
 
     private Object bean;
 
+    private PropertyValues propertyValues;
+
     public BeanDefinition(String name,String className){
         this.name = name;
         this.className = className;
         this.bean = null;
+        this.propertyValues = new PropertyValues();
     }
 
 
@@ -34,5 +37,13 @@ public class  BeanDefinition  {
 
     public Object getBean() {
         return bean;
+    }
+
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
     }
 }

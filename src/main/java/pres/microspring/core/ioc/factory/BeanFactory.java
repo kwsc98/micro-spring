@@ -1,6 +1,7 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.ioc.factory;
 
 
+import pres.microspring.core.ioc.BeanDefinition;
 
 /**
  * @author kwsc98

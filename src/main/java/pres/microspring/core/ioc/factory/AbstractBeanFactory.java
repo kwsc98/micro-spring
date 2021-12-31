@@ -1,4 +1,6 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.ioc.factory;
+
+import pres.microspring.core.ioc.BeanDefinition;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -8,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author kwsc98
  */
-public abstract class AbstractBeanFactory implements BeanFactory{
+public abstract class AbstractBeanFactory implements BeanFactory {
 
 	private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 

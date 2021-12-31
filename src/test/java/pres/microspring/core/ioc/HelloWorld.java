@@ -10,7 +10,9 @@ package pres.microspring.core.ioc;
  **/
 public class HelloWorld {
 
+    private String name;
+
     public void say(){
-        System.out.println("Hello World!");
+        System.out.println(name+": Hello World!");
     }
 }
