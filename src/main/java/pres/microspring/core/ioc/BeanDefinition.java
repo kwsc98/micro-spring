@@ -4,7 +4,7 @@ package pres.microspring.core.ioc;
 /**
  * @author kwsc98
  */
-public class  BeanDefinition  {
+public class BeanDefinition {
 
 
     private final String name;
@@ -15,7 +15,7 @@ public class  BeanDefinition  {
 
     private PropertyValues propertyValues;
 
-    public BeanDefinition(String name,String className){
+    public BeanDefinition(String name, String className) {
         this.name = name;
         this.className = className;
         this.bean = null;

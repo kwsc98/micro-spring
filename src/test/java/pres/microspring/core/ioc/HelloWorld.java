@@ -12,7 +12,17 @@ public class HelloWorld {
 
     private String name;
 
-    public void say(){
-        System.out.println(name+": Hello World!");
+    private HelloWorldService helloWorldService;
+
+    public void say() {
+        helloWorldService.say();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

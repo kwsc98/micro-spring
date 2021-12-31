@@ -12,18 +12,30 @@ import pres.microspring.core.ioc.factory.DefinitionBeanFactory;
  * @since
  **/
 public class IocTest {
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) {
 
-            BeanFactory beanFactory = new DefinitionBeanFactory();
-            String id = "helloworld";
-            String className = "pres.microspring.core.ioc.HelloWorld";
-            //调用Class.forName获取类对象，通过newInstance通过无参构造器实例化类对象
-            Object o = Class.forName(className).newInstance();
-            BeanDefinition beanDefinition = new BeanDefinition(id,className);
-            beanDefinition.getPropertyValues().add(new PropertyValue("name","kwsc98"));
-            beanFactory.registerBeanDefinition(id, beanDefinition);
-            HelloWorld helloWorld = (HelloWorld) beanFactory.getBean(id);
-            helloWorld.say();
+        BeanFactory beanFactory = new DefinitionBeanFactory();
+
+        String id = "helloWorld";
+        String className = "pres.microspring.core.ioc.HelloWorld";
+        String id2 = "helloWorldService";
+        String className2 = "pres.microspring.core.ioc.HelloWorldService";
+
+        //初始化HelloWorld
+        BeanDefinition beanDefinition = new BeanDefinition(id, className);
+        beanDefinition.getPropertyValues().add(PropertyValue.init().setName("name").setValue("kwsc98"));
+        beanDefinition.getPropertyValues().add(PropertyValue.init().setName("helloWorldService").setRef(id2));
+
+        //初始化HelloWorldService
+        BeanDefinition beanDefinition2 = new BeanDefinition(id2, className2);
+        beanDefinition2.getPropertyValues().add(PropertyValue.init().setName("helloWorld").setRef(id));
+
+
+        beanFactory.registerBeanDefinition(id, beanDefinition);
+        beanFactory.registerBeanDefinition(id2, beanDefinition2);
+
+        HelloWorld helloWorld = (HelloWorld) beanFactory.getBean(id);
+        helloWorld.say();
 
     }
 }

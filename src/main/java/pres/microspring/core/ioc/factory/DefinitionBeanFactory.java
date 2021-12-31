@@ -20,22 +20,28 @@ public class DefinitionBeanFactory extends AbstractBeanFactory {
      */
     @Override
     protected Object initBean(BeanDefinition beanDefinition) {
-        try{
+        try {
             Object beanObject = Class.forName(beanDefinition.getClassName()).newInstance();
-            initPropertyValues(beanObject,beanDefinition.getPropertyValues());
+            beanDefinition.setBean(beanObject);
+            initPropertyValues(beanObject, beanDefinition.getPropertyValues());
             return beanObject;
-        }catch (Exception e){
-             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     private void initPropertyValues(Object beanObject, PropertyValues propertyValues) throws NoSuchFieldException, IllegalAccessException {
-        for (PropertyValue propertyValue : propertyValues.getPropertyValues()
-             ) {
+        for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
             Field field = beanObject.getClass().getDeclaredField(propertyValue.getName());
             field.setAccessible(true);
-            field.set(beanObject, propertyValue.getValue());
+            Object value = null;
+            if (propertyValue.isRef()) {
+                value = getBean(propertyValue.getRef());
+            } else {
+                value = propertyValue.getValue();
+            }
+            field.set(beanObject, value);
         }
     }
 }
