@@ -14,12 +14,17 @@ public abstract class AbstractBeanFactory implements BeanFactory{
 
 	@Override
 	public Object getBean(String name) {
-		return beanDefinitionMap.get(name).getBean();
+		BeanDefinition beanDefinition = beanDefinitionMap.get(name);
+		Object beanObject = beanDefinition.getBean();
+		if(beanObject==null){
+			beanObject = initBean(beanDefinition);
+			beanDefinition.setBean(beanObject);
+		}
+		return beanObject;
 	}
 
 	@Override
 	public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
-		beanDefinition.setBean(initBean(beanDefinition));
 		beanDefinitionMap.put(name, beanDefinition);
 	}
 
