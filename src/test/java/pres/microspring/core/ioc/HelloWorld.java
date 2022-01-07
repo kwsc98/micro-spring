@@ -8,15 +8,11 @@ package pres.microspring.core.ioc;
  * @author wangsicheng
  * @since
  **/
-public class HelloWorld {
+public class HelloWorld implements Behavior {
 
     private String name;
 
     private HelloWorldService helloWorldService;
-
-    public void say() {
-        helloWorldService.say();
-    }
 
     public String getName() {
         return name;
@@ -25,4 +21,14 @@ public class HelloWorld {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public void say()  {
+        try{
+            helloWorldService.say();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

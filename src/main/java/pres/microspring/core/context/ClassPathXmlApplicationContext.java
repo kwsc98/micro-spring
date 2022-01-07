@@ -19,7 +19,7 @@ public class ClassPathXmlApplicationContext implements ApplicationContext{
     private final BeanFactory beanFactory;
     private final String path;
 
-    ClassPathXmlApplicationContext(String path){
+    public ClassPathXmlApplicationContext(String path){
         this.path = path;
         beanFactory = new DefinitionBeanFactory();
         init();

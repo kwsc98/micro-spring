@@ -8,10 +8,11 @@ package pres.microspring.core.ioc;
  * @author wangsicheng
  * @since
  **/
-public class HelloWorldService {
+public class HelloWorldService implements Behavior {
 
     HelloWorld helloWorld;
 
+    @Override
     public void say() {
         System.out.println(helloWorld.getName() + " say : Hello World!");
     }
