@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans>
-
-    <bean id="helloWorldService" class="pres.microspring.core.ioc.HelloWorldService">
-        <property name="helloWorld" ref ="helloWorld"></property>
-    </bean>
-    <import resource="/micro2-spring.xml"/>
-</beans>
