@@ -7,7 +7,7 @@ package pres.microspring.core.ioc;
 public class BeanDefinition {
 
 
-    private final String name;
+    private final String id;
 
     private final String className;
 
@@ -15,8 +15,8 @@ public class BeanDefinition {
 
     private PropertyValues propertyValues;
 
-    public BeanDefinition(String name, String className) {
-        this.name = name;
+    public BeanDefinition(String id, String className) {
+        this.id = id;
         this.className = className;
         this.bean = null;
         this.propertyValues = new PropertyValues();
@@ -27,8 +27,8 @@ public class BeanDefinition {
         this.bean = bean;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     public String getClassName() {

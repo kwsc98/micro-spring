@@ -12,7 +12,6 @@ import java.lang.reflect.Field;
  * 2021/12/30 18:22
  *
  * @author wangsicheng
- * @since
  **/
 public class DefinitionBeanFactory extends AbstractBeanFactory {
     /**
@@ -22,7 +21,9 @@ public class DefinitionBeanFactory extends AbstractBeanFactory {
     protected Object initBean(BeanDefinition beanDefinition) {
         try {
             Object beanObject = Class.forName(beanDefinition.getClassName()).newInstance();
+            //先提前将实例化的beanObject放入beanDefinition,之后延迟加载的bean初始化就可以直接获取beanObject
             beanDefinition.setBean(beanObject);
+            //初始化beanObject
             initPropertyValues(beanObject, beanDefinition.getPropertyValues());
             return beanObject;
         } catch (Exception e) {

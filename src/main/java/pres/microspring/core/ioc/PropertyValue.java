@@ -45,6 +45,9 @@ public class PropertyValue {
     }
 
     public PropertyValue setRef(String ref) {
+        if(ref==null || ref.length()<=0){
+            return this;
+        }
         this.isRef = true;
         this.ref = ref;
         return this;
