@@ -1,7 +1,9 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.dom;
 
 
 import pres.microspring.core.dom.Dom4jXmlResolver;
+import pres.microspring.core.ioc.BeanDefinition;
+import pres.microspring.core.ioc.HelloWorld;
 import pres.microspring.core.ioc.factory.BeanFactory;
 import pres.microspring.core.ioc.factory.DefinitionBeanFactory;
 
@@ -24,5 +26,6 @@ public class DomTest {
         }
         HelloWorld helloWorld = (HelloWorld) beanFactory.getBean("helloWorld");
         helloWorld.say();
+
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
     <bean id="helloWorld" class="pres.microspring.core.ioc.HelloWorld">
-        <property name="name" value="kwsc98"></property>
-        <property name="helloWorldService" ref ="helloWorldService"></property>
+        <property name="name" value="kwsc98"/>
+        <property name="helloWorldService" ref ="helloWorldService"/>
     </bean>
 </beans>

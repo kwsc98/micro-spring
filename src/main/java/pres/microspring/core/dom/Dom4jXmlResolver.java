@@ -32,7 +32,7 @@ public class Dom4jXmlResolver {
     }
 
 
-    public static List<BeanDefinition> resolverRootElement(Element element) {
+    private static List<BeanDefinition> resolverRootElement(Element element) {
         List<BeanDefinition> list = new ArrayList<>();
         Iterator<?> iterable = element.elementIterator();
         while (iterable.hasNext()) {
