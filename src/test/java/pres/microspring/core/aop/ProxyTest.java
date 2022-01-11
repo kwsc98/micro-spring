@@ -27,5 +27,6 @@ public class ProxyTest {
         HelloWorld helloWorldProxyObject = (HelloWorld) CglibProxyBuilder.creatProxyObject(helloWorld);
         helloWorld.setName("CglibKwsc98");
         helloWorldProxyObject.say();
+
     }
 }
