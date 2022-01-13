@@ -1,5 +1,7 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.aop.methodInterceptor;
 
+
+import pres.microspring.core.ioc.Behavior;
 
 /**
  * micro-spring

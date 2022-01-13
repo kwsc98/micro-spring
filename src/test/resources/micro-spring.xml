@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 
+    <import resource="/micro2-spring.xml"/>
+
     <bean id="helloWorldService" class="pres.microspring.core.ioc.HelloWorldService">
         <property name="helloWorld" ref ="helloWorld"/>
     </bean>
-    <import resource="/micro2-spring.xml"/>
+
+    <bean id="aopProxyFactory" class="pres.microspring.core.aop.DefaultAopProxyFactory"/>
+
+    <bean id="aopProxyBeanPostProcessor" class="pres.microspring.core.aop.AopProxyBeanPostProcessor"/>
+
+    <bean id="testMethodInterceptor" class="pres.microspring.core.aop.TestMethodInterceptor"/>
+
+    <bean id="aspectJExpressionPointcutAdvisor" class="pres.microspring.core.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <property name="expression" value ="execution(* pres.microspring.core.aop.methodInterceptor.*.*(..))"/>
+        <property name="advice" ref ="testMethodInterceptor"/>
+    </bean>
+
+
 </beans>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2018 the original author or authors.
+ * Copyright 2002-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,26 +17,9 @@
 package pres.microspring.core.aop;
 
 
-
-public class TargetSource {
-
-    private Class<?> targetClass;
-
-	private Object targetObject;
-
-	public TargetSource(Object target){
-		this.targetClass = target.getClass();
-		this.targetObject = target;
-	};
-
-	public Class<?> getTargetClass(){
-		return this.targetClass;
-	}
+public interface AopProxyFactory {
 
 
-	public Object getTarget(){
-		return this.targetObject;
-	}
-
+	AopProxy createAopProxy(AdvisedSupport config);
 
 }

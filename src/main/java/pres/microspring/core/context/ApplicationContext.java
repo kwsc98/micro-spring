@@ -1,6 +1,8 @@
 package pres.microspring.core.context;
 
 
+import pres.microspring.core.ioc.factory.BeanFactory;
+
 /**
  * micro-spring
  * 2022/1/7 16:27
@@ -8,10 +10,6 @@ package pres.microspring.core.context;
  * @author lanhaifeng
  * @since
  **/
-public interface ApplicationContext {
-    /**
-     * name : bean的id
-     * return bean的实例对象
-     */
-    Object getBean(String name);
+public interface ApplicationContext extends BeanFactory {
+
 }

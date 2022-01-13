@@ -3,6 +3,8 @@ package pres.microspring.core.ioc.factory;
 
 import pres.microspring.core.ioc.BeanDefinition;
 
+import java.util.List;
+
 /**
  * @author kwsc98
  */
@@ -11,11 +13,13 @@ public interface BeanFactory {
      * name : bean的id
      * return bean的实例对象
      */
-    Object getBean(String name);
+    Object getBean(String beanName);
 
     /**
-     * 获取bean的实例对象
+     * beanClass : bean的id
+     * return bean的实例对象列表
      */
-    void registerBeanDefinition(String name, BeanDefinition beanDefinition);
+    List<Object> getBeanByBusinessType(Class<?> beanClass);
+
 
 }

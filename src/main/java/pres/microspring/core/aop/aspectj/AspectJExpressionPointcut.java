@@ -178,7 +178,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
 
     private PointcutExpression buildPointcutExpression() {
         PointcutParser parser = PointcutParser
-                .getPointcutParserSupportingSpecifiedPrimitivesAndUsingSpecifiedClassLoaderForResolution(SUPPORTED_PRIMITIVES, ClassUtils.getDefaultClassLoader());
+                .getPointcutParserSupportingSpecifiedPrimitivesAndUsingContextClassloaderForResolution(SUPPORTED_PRIMITIVES);
         return parser.parsePointcutExpression(getExpression());
     }
 

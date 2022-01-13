@@ -14,7 +14,7 @@ import pres.microspring.core.ioc.factory.DefinitionBeanFactory;
 public class IocTest {
     public static void main(String[] args) {
 
-        BeanFactory beanFactory = new DefinitionBeanFactory();
+        DefinitionBeanFactory beanFactory = new DefinitionBeanFactory();
 
         String id = "helloWorld";
         String className = "pres.microspring.core.ioc.HelloWorld";

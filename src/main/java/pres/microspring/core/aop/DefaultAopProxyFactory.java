@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2018 the original author or authors.
+ * Copyright 2002-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,25 +18,23 @@ package pres.microspring.core.aop;
 
 
 
-public class TargetSource {
+import pres.microspring.core.aopalliance.AopConfig;
 
-    private Class<?> targetClass;
+import java.io.Serializable;
 
-	private Object targetObject;
 
-	public TargetSource(Object target){
-		this.targetClass = target.getClass();
-		this.targetObject = target;
-	};
+/**
+ * @author kwsc98
+ */
+public class DefaultAopProxyFactory implements AopProxyFactory, Serializable {
 
-	public Class<?> getTargetClass(){
-		return this.targetClass;
+	@Override
+	public AopProxy createAopProxy(AdvisedSupport config)  {
+         if(AopConfig.IsCglibAop){
+			 return new JdkDynamicAopProxy(config);
+		 }else {
+			 return new CglibAopProxy(config);
+		 }
 	}
-
-
-	public Object getTarget(){
-		return this.targetObject;
-	}
-
 
 }

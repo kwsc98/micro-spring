@@ -19,7 +19,7 @@ import java.util.List;
 public class DomTest {
     public static void main(String[] args) {
         List<BeanDefinition> list = Dom4jXmlResolver.resolverXml("/micro-spring.xml");
-        BeanFactory beanFactory = new DefinitionBeanFactory();
+        DefinitionBeanFactory beanFactory = new DefinitionBeanFactory();
         for (BeanDefinition beanDefinition:list
              ) {
             beanFactory.registerBeanDefinition(beanDefinition.getId(),beanDefinition);
