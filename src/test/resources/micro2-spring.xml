@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
+    <!--helloWorld-->
     <bean id="helloWorld" class="pres.microspring.core.model.HelloWorld">
+        <!--属性name-->
         <property name="name" value="kwsc98"/>
+        <!--依赖注入helloWorldService-->
         <property name="helloWorldService" ref ="helloWorldService"/>
     </bean>
 </beans>

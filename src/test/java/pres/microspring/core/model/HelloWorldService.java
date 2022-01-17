@@ -10,7 +10,7 @@ package pres.microspring.core.model;
  **/
 public class HelloWorldService implements Behavior {
 
-    Behavior helloWorld;
+    HelloWorld helloWorld;
 
     public HelloWorldService setHelloWorld(HelloWorld helloWorld) {
         this.helloWorld = helloWorld;

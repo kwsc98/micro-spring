@@ -17,12 +17,18 @@
 package pres.microspring.core.aop;
 
 
-
+/**
+ * 代理目标类
+ */
 public class TargetSource {
-
-    private Class<?> targetClass;
-
-	private Object targetObject;
+	/**
+	 * 代理目标类的类型
+	 */
+    private final Class<?> targetClass;
+	/**
+	 * 代理目标类的实例化对象
+	 */
+	private final Object targetObject;
 
 	public TargetSource(Object target){
 		this.targetClass = target.getClass();

@@ -1,19 +1,3 @@
-/*
- * Copyright 2002-2021 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package pres.microspring.core.aop.aspectj;
 
 
@@ -35,33 +19,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Spring implementation
- * that uses the AspectJ weaver to evaluate a pointcut expression.
- *
- * <p>The pointcut expression value is an AspectJ expression. This can
- * reference other pointcuts and use composition and other operations.
- *
- * <p>Naturally, as this is to be processed by Spring AOP's proxy-based model,
- * only method execution pointcuts are supported.
- *
- * @author Rob Harrop
- * @author Adrian Colyer
- * @author Rod Johnson
- * @author Juergen Hoeller
- * @author Ramnivas Laddad
- * @author Dave Syer
- * @since 2.0
+ * Aspect实现类
  */
 public class AspectJExpressionPointcut extends AbstractExpressionPointcut implements ClassFilter, MethodMatcher, BeanFactoryAware {
 
     private static final Logger logger = LoggerFactory.getLogger(AspectJExpressionPointcut.class);
 
-
+    /**
+     * Aspect支持的匹配规则
+     */
     private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<>();
 
-
+    /**
+     * Aspect核心匹配类
+     */
     private PointcutExpression pointcutExpression;
 
+    /**
+     * beanFactory，用于对bean的一些匹配（暂无使用）
+     */
     private BeanFactory beanFactory;
 
 
@@ -80,9 +56,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
 
 
     /**
-     * Return the ClassFilter for this pointcut.
-     *
-     * @return the ClassFilter (never {@code null})
+     * 获取Aspect类匹配器
      */
     @Override
     public ClassFilter getClassFilter() {
@@ -91,9 +65,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
     }
 
     /**
-     * Return the MethodMatcher for this pointcut.
-     *
-     * @return the MethodMatcher (never {@code null})
+     * 获取Aspect方法匹配器
      */
     @Override
     public MethodMatcher getMethodMatcher() {
@@ -102,7 +74,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
     }
 
     /**
-     * 切入点应该应用到给定的接口或目标类?
+     * 判断当前传入类是否符合匹配
      *
      * @param targetClass 候选的目标类
      * @return 通知是否应该应用于给定的目标类
@@ -119,9 +91,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
     }
 
     /**
-     * 静态检查给定方法是否匹配。
-     * <p>如果返回{@code false}或如果{@link #isRuntime()}
-     * 方法返回{@code false}，没有运行时检查(即没有
+     * 判断传入的方法是否符合匹配
      *
      * @param method      候选方法
      * @param targetClass 目标类
@@ -135,7 +105,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
     }
 
     /**
-     * 判断这个MethodMatcher是动态的吗，也就是说，必须对
+     * 判断这个MethodMatcher是动态的吗
      */
     @Override
     public boolean isRuntime() {
@@ -156,20 +126,22 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut implem
     }
 
     /**
-     * Check whether this pointcut is ready to match,
-     * lazily building the underlying AspectJ pointcut expression.
+     * 获取PointcutExpression
      */
     private PointcutExpression obtainPointcutExpression() {
         if (getExpression() == null) {
             throw new IllegalStateException("Must set property 'expression' before attempting to match");
         }
         if (this.pointcutExpression == null) {
+            //判断如果PointcutExpression还未实例化则进行实例化
             this.pointcutExpression = buildPointcutExpression();
         }
         return this.pointcutExpression;
     }
 
-
+    /**
+     * 实例化PointcutExpression
+     */
     private PointcutExpression buildPointcutExpression() {
         PointcutParser parser = PointcutParser
                 .getPointcutParserSupportingSpecifiedPrimitivesAndUsingContextClassloaderForResolution(SUPPORTED_PRIMITIVES);

@@ -1,19 +1,3 @@
-/*
- * Copyright 2002-2020 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package pres.microspring.core.aop;
 
 
@@ -24,11 +8,17 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
-
+/**
+ * 基于JDK方式进行目标类的代理
+ **/
 final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializable {
-
+    /**
+     * 目标类的代理深度
+     **/
     private int depth = 0;
-
+    /**
+     * SpringAop代理支持类
+     **/
     private final AdvisedSupport advisedSupport;
 
     public JdkDynamicAopProxy(AdvisedSupport advisedSupport) {
@@ -37,12 +27,15 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 
     @Override
     public Object getProxy() {
+        System.out.println("使用JDK代理目标："+advisedSupport.getTargetSource().getTarget());
         List<MethodSuppory> methodSupporyList = this.advisedSupport.getMethodSupporyList();
         if(methodSupporyList == null || methodSupporyList.size()<=0){
             return this.advisedSupport.getTargetSource().getTarget();
         }
+        //这里通过递归的方式进行目标类的多重代理
         return init(0,this.advisedSupport.getTargetSource().getTarget());
     }
+
     private Object init(int i,Object targetObject){
         JdkDynamicAopProxy jdkDynamicAopProxy = new JdkDynamicAopProxy(advisedSupport);
         jdkDynamicAopProxy.depth = i;

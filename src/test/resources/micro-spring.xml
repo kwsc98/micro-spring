@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-<!--    <aspectj-autoproxy />-->
-
+    <!--此注解决定是否使用cglib的方式进行aop代理-->
+    <aspectj-autoproxy />
+    <!--引入另一个bean元数据xml-->
     <import resource="/micro2-spring.xml"/>
-
+    <!--HelloWorldService-->
     <bean id="helloWorldService" class="pres.microspring.core.model.HelloWorldService">
+        <!--依赖注入helloWorld-->
         <property name="helloWorld" ref ="helloWorld"/>
     </bean>
-
+    <!--aopProxyFactory-->
     <bean id="aopProxyFactory" class="pres.microspring.core.aop.DefaultAopProxyFactory"/>
+    <!--aopProxyBeanPostProcessor-->
     <bean id="aopProxyBeanPostProcessor" class="pres.microspring.core.aop.AopProxyBeanPostProcessor"/>
-
-
+    <!--aop代理方法-->
     <bean id="testMethodInterceptor" class="pres.microspring.core.aop.TestMethodInterceptor"/>
-
+    <!--SpringAop织入配置类-->
     <bean id="aspectJExpressionPointcutAdvisor" class="pres.microspring.core.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <!--匹配表达式-->
         <property name="expression" value ="execution(* pres.microspring.core.model.*.*(..))"/>
+        <!--代理方法-->
         <property name="advice" ref ="testMethodInterceptor"/>
     </bean>
 

@@ -39,13 +39,16 @@ public class Dom4jXmlResolver {
         while (iterable.hasNext()) {
             Element element1 = (Element) iterable.next();
             if ("bean".equals(element1.getName())) {
+                //step2-1 判断为bean标签则将对应BeanDefinition加入list
                 list.add(BeanElementService.resolver(element1));
             } else if ("import".equals(element1.getName())) {
+                //step2-2 判断为import标签则递归进行解析
                 String resourceValue = element1.attributeValue("resource");
                 if (resourceValue != null && resourceValue.length() > 0) {
                     list.addAll(resolverXml(resourceValue));
                 }
             } else if ("aspectj-autoproxy".equals(element1.getName())){
+                //step2-3 判断为aspectj-autoproxy则采用cglib的方式进行代理
                 AopConfig.setIsCglibAop(true);
             }
         }

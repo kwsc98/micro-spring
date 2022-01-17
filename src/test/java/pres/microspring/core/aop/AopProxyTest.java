@@ -3,9 +3,9 @@ package pres.microspring.core.aop;
 
 
 import pres.microspring.core.model.Behavior;
-import pres.microspring.core.model.HelloWorld;
 import pres.microspring.core.context.ApplicationContext;
 import pres.microspring.core.context.ClassPathXmlApplicationContext;
+import pres.microspring.core.model.HelloWorld;
 
 
 /**
@@ -17,9 +17,9 @@ import pres.microspring.core.context.ClassPathXmlApplicationContext;
  **/
 public class AopProxyTest {
     public static void main(String[] args) {
-
+        //step1 通过ApplicationContext初始化Ioc容器
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/micro-spring.xml");
-        Behavior helloWorld = (Behavior) applicationContext.getBean("helloWorld");
+        HelloWorld helloWorld = (HelloWorld) applicationContext.getBean("helloWorld");
         helloWorld.say();
 
     }

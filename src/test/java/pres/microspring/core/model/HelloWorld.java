@@ -12,7 +12,7 @@ public class HelloWorld implements Behavior {
 
     private String name;
 
-    private Behavior helloWorldService;
+    private HelloWorldService helloWorldService;
 
 
     public void setHelloWorldService(HelloWorldService helloWorldService) {

@@ -1,17 +1,19 @@
 package pres.microspring.core.aop;
 
 
-import net.sf.cglib.proxy.MethodInterceptor;
-import pres.microspring.core.aop.MethodMatcher;
-import pres.microspring.core.aop.TargetSource;
-
 import java.util.List;
 
-
+/**
+ * Aop代理支持类
+ */
 public class AdvisedSupport {
-
+    /**
+     * 代理目标类
+     */
 	private TargetSource targetSource;
-
+    /**
+     * aop类过滤处理支持类列表（支持多重代理）
+     */
     private List<MethodSuppory> methodSupporyList;
 
     public TargetSource getTargetSource() {

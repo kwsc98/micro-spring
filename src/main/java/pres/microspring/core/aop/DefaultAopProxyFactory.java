@@ -24,10 +24,15 @@ import java.io.Serializable;
 
 
 /**
+ * 默认的springAopFactory类
  * @author kwsc98
  */
 public class DefaultAopProxyFactory implements AopProxyFactory, Serializable {
 
+	/**
+	 * 根据配置获取对应代理方式
+	 * @author kwsc98
+	 */
 	@Override
 	public AopProxy createAopProxy(AdvisedSupport config)  {
          if(AopConfig.IsCglibAop){
