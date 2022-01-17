@@ -1,4 +1,4 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.model;
 
 
 /**

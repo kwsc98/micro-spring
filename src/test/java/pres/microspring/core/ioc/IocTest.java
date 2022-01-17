@@ -1,8 +1,8 @@
 package pres.microspring.core.ioc;
 
 
-import pres.microspring.core.ioc.factory.BeanFactory;
 import pres.microspring.core.ioc.factory.DefinitionBeanFactory;
+import pres.microspring.core.model.HelloWorld;
 
 /**
  * micro-spring

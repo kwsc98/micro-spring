@@ -1,11 +1,9 @@
 package pres.microspring.core.dom;
 
 
-import pres.microspring.core.dom.Dom4jXmlResolver;
 import pres.microspring.core.ioc.BeanDefinition;
-import pres.microspring.core.ioc.HelloWorld;
-import pres.microspring.core.ioc.factory.BeanFactory;
 import pres.microspring.core.ioc.factory.DefinitionBeanFactory;
+import pres.microspring.core.model.HelloWorld;
 
 import java.util.List;
 

@@ -1,8 +1,7 @@
 package pres.microspring.core.context;
 
 
-import pres.microspring.core.ioc.HelloWorld;
-
+import pres.microspring.core.model.HelloWorld;
 
 /**
  * micro-spring

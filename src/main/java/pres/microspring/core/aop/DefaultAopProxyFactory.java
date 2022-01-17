@@ -31,9 +31,9 @@ public class DefaultAopProxyFactory implements AopProxyFactory, Serializable {
 	@Override
 	public AopProxy createAopProxy(AdvisedSupport config)  {
          if(AopConfig.IsCglibAop){
-			 return new JdkDynamicAopProxy(config);
-		 }else {
 			 return new CglibAopProxy(config);
+		 }else {
+			 return new JdkDynamicAopProxy(config);
 		 }
 	}
 

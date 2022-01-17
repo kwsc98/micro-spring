@@ -4,6 +4,7 @@ package pres.microspring.core.dom;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import pres.microspring.core.aopalliance.AopConfig;
 import pres.microspring.core.ioc.BeanDefinition;
 
 import java.util.ArrayList;
@@ -44,6 +45,8 @@ public class Dom4jXmlResolver {
                 if (resourceValue != null && resourceValue.length() > 0) {
                     list.addAll(resolverXml(resourceValue));
                 }
+            } else if ("aspectj-autoproxy".equals(element1.getName())){
+                AopConfig.setIsCglibAop(true);
             }
         }
         return list;

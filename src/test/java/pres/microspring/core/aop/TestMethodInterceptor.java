@@ -17,9 +17,9 @@ public class TestMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        System.out.println("run time:"+new Date().toString());
+        System.out.println("run time:" + new Date().toString() + "("+invocation.getMethod().getName()+")");
         Object object = invocation.proceed();
-        System.out.println("end time:"+new Date().toString());
+        System.out.println("end time:" + new Date().toString() + "("+invocation.getMethod().getName()+")");
         return object;
     }
 }

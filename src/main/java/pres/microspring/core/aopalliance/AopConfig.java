@@ -10,4 +10,8 @@ package pres.microspring.core.aopalliance;
  **/
 public class AopConfig {
     public static boolean IsCglibAop = false;
+
+    public static void setIsCglibAop(boolean isCglibAop) {
+        IsCglibAop = isCglibAop;
+    }
 }

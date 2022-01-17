@@ -1,4 +1,4 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.model;
 
 
 /**
@@ -10,7 +10,7 @@ package pres.microspring.core.ioc;
  **/
 public class HelloWorldService implements Behavior {
 
-    HelloWorld helloWorld;
+    Behavior helloWorld;
 
     public HelloWorldService setHelloWorld(HelloWorld helloWorld) {
         this.helloWorld = helloWorld;
@@ -19,6 +19,6 @@ public class HelloWorldService implements Behavior {
 
     @Override
     public void say() {
-        System.out.println(helloWorld.getName() + " say : Hello World!");
+        System.out.println(helloWorld + " say : Hello World!");
     }
 }

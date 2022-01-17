@@ -1,4 +1,4 @@
-package pres.microspring.core.ioc;
+package pres.microspring.core.model;
 
 
 /**
@@ -12,7 +12,7 @@ public class HelloWorld implements Behavior {
 
     private String name;
 
-    private HelloWorldService helloWorldService;
+    private Behavior helloWorldService;
 
 
     public void setHelloWorldService(HelloWorldService helloWorldService) {
